@@ -16,6 +16,8 @@ struct AppInfo {
 namespace AppDefines {
 
     extern const AppInfo EXCEL;
+    extern const AppInfo WORD;
+    extern const AppInfo POWERPOINT;
     extern const AppInfo VSCODE;
 
     extern const QVector<AppInfo> ALL;

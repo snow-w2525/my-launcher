@@ -34,6 +34,70 @@ namespace AppDefines {
         })
     };
 
+    // Word
+    const AppInfo WORD{
+        "Word",
+#ifdef Q_OS_WIN
+        "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+        "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+#elif Q_OS_MAC
+
+#endif
+        ":/res/icons/icon_word.svg",
+        "QFrame{background-color: rgb(0, 85, 255); border-radius: 10px}",
+        QVector<QString>({
+            "Standard Word Document (*.docx)",
+            "Macro-enabled Word Document (*.docm)",
+            "Word 97–2003 Document (*.doc)",
+            "Strict Open XML Document (*.docx)",
+            "Template [no macros] (*.dotx)",
+            "Macro-enabled Template (*.dotm)",
+            "Word 97–2003 Template (*.dot)",
+            "Rich Text Format (*.rtf)",
+            "Plain Text (*.txt)",
+            "Web Page (*.htm; *.html)",
+            "Filtered Web Page (*.htm; *.html)",
+            "Single File Web Page (*.mht; *.mhtml)",
+            "OpenDocument Text (*.odt)",
+            "PDF Document (*.pdf)",
+            "XPS Document (*.xps)",
+            "Word XML Document (*.xml)",
+            "Word 2003 XML Document (*.xml)",
+            "Microsoft Works Document (*.wps)",
+            "Others (*.*)"
+        })
+    };
+
+    // Power Point
+    const AppInfo POWERPOINT{
+        "Power Point",
+#ifdef Q_OS_WIN
+        "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE",
+        "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE",
+#elif Q_OS_MAC
+
+#endif
+        ":/res/icons/icon_powerpoint.svg",
+        "QFrame{background-color: rgb(255, 0, 0); border-radius: 10px}",
+        QVector<QString>({
+            "Standard Presentation (*.pptx)",
+            "Macro-enabled Presentation (*.pptm)",
+            "PowerPoint 97–2003 Presentation (*.ppt)",
+            "Strict Open XML Presentation (*.pptx)",
+            "Template [no macros] (*.potx)",
+            "Macro-enabled Template (*.potm)",
+            "PowerPoint 97–2003 Template (*.pot)",
+            "Slide Show (*.ppsx)",
+            "Macro-enabled Slide Show (*.ppsm)",
+            "PowerPoint 97–2003 Slide Show (*.pps)",
+            "Add-In (*.ppam)",
+            "PowerPoint 97–2003 Add-In (*.ppa)",
+            "Others (*.*)"
+        })
+    };
+
+
+
     // VS Code
     const AppInfo VSCODE{
         "VS Code",
@@ -87,6 +151,8 @@ namespace AppDefines {
 
     const QVector<AppInfo> ALL {
         EXCEL,
-        VSCODE
+        WORD,
+        VSCODE,
+        POWERPOINT
     };
 }
