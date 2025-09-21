@@ -32,7 +32,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
     ui->pushButton_execapp->setStyleSheet("QPushButton{background-color: white; border-radius: 10px}");
 
     connect(ui->pushButton_execapp, &QPushButton::clicked, this, [=]() {    // ボタンを押した時の処理
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
         if(ui->comboBox_filelist->currentText().isEmpty()){
             QProcess::startDetached(app._command);
         }
@@ -54,9 +54,9 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
      * ------------------------------------------------------------*/
     connect(ui->pushButton_filebrowse, &QPushButton::clicked, this, [=]() {
         QFileDialog dialog(this);
-        dialog.setFileMode(QFileDialog::ExistingFiles);             // 複数ファイル選択を許可
-        dialog.setOption(QFileDialog::ShowDirsOnly, false);         // フォルダも選択
-        dialog.setOption(QFileDialog::DontUseNativeDialog, true);   // Qt独自ダイアログを使用
+        dialog.setFileMode(QFileDialog::ExistingFiles);                     // 複数ファイル選択を許可
+        dialog.setOption(QFileDialog::ShowDirsOnly, false);                 // フォルダも選択
+        dialog.setOption(QFileDialog::DontUseNativeDialog, true);           // Qt独自ダイアログを使用
         QString exts;
         for(const QString& ext : app._exts){
             exts += ext + ";;";

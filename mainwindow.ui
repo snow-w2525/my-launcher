@@ -24,7 +24,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>500</width>
+    <width>400</width>
     <height>1080</height>
    </size>
   </property>
@@ -96,8 +96,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>366</width>
-         <height>694</height>
+         <width>359</width>
+         <height>684</height>
         </rect>
        </property>
       </widget>
@@ -111,7 +111,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

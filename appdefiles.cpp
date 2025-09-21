@@ -11,7 +11,7 @@ const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); b
     // Excel
     const AppInfo EXCEL{
         "Excel",
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE",
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE",
 #elif defined(Q_OS_MAC)
@@ -43,7 +43,7 @@ const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); b
     // Word
     const AppInfo WORD{
         "Word",
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
 #elif defined(Q_OS_MAC)
@@ -78,7 +78,7 @@ const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); b
     // Power Point
     const AppInfo POWERPOINT{
         "Power Point",
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE",
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE",
 #elif defined(Q_OS_MAC)
@@ -109,7 +109,7 @@ const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); b
     // VS Code
     const AppInfo VSCODE{
         "VS Code",
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
         qEnvironmentVariable("LOCALAPPDATA") + "\\Programs\\Microsoft VS Code\\Code.exe",
         qEnvironmentVariable("LOCALAPPDATA") + "\\Programs\\Microsoft VS Code\\Code.exe",
 #elif defined(Q_OS_MAC)
