@@ -15,6 +15,8 @@ struct AppInfo {
 
 namespace AppDefines {
 
+    extern const QString DEACTIVATE_PANEL;
+
     extern const AppInfo EXCEL;
     extern const AppInfo WORD;
     extern const AppInfo POWERPOINT;

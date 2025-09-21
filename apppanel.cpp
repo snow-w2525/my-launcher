@@ -15,30 +15,41 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
 {
     ui->setupUi(this);
 
-    // スタイル設定
+    /* スタイルの設定
+     * ------------------------------------------------------------*/
     ui->frame_apppanel->setStyleSheet(app._style);
 
-    // アプリタイトル
+
+    /* タイトル
+     * ------------------------------------------------------------*/
     ui->label_apptitle->setText(app._appname);
 
-    // 実行ボタン
+
+    /* 実行ボタン
+     * ------------------------------------------------------------*/
     ui->pushButton_execapp->setIcon(QIcon(app._iconpath));
     ui->pushButton_execapp->setFlat(true);
-    // 実体の存在確認
+    connect(ui->pushButton_execapp, &QPushButton::clicked, this, [=]() {    // ボタンを押した時の処理
 #ifdef Q_OS_WIN
-    ui->pushButton_execapp->setEnabled(QFile::exists(app._apppath));
-#elif Q_OS_MAC
-#endif
-    connect(ui->pushButton_execapp, &QPushButton::clicked, this, [=]() {
         if(ui->comboBox_filelist->currentText().isEmpty()){
             QProcess::startDetached(app._command);
         }
         else{
             QProcess::startDetached(app._command, QStringList() << ui->comboBox_filelist->currentText());
         }
+#elif defined(Q_OS_MAC)
+        if(ui->comboBox_filelist->currentText().isEmpty()){
+            QProcess::startDetached("open", {"-a", app._command});
+        }
+        else{
+            QProcess::startDetached("open", {"-a", app._command, ui->comboBox_filelist->currentText()});
+        }
+#endif
     });
 
-    // ファイル検索ボタン
+
+    /* ファイル検索ボタン
+     * ------------------------------------------------------------*/
     connect(ui->pushButton_filebrowse, &QPushButton::clicked, this, [=]() {
         QFileDialog dialog(this);
         dialog.setFileMode(QFileDialog::ExistingFiles);             // 複数ファイル選択を許可
@@ -58,6 +69,13 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         }
     });
 
+
+    /* 実体がない場合はパネルを非活性にする
+     * ------------------------------------------------------------*/
+    if(!QFile::exists(app._apppath)){
+        ui->frame_apppanel->setStyleSheet(AppDefines::DEACTIVATE_PANEL);
+        ui->pushButton_execapp->setEnabled(false);
+    }
 
 }
 

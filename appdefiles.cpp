@@ -1,6 +1,12 @@
 #include "appdefiles.h"
 
+#ifdef Q_OS_MAC
+#include <QStandardPaths>
+#endif
+
 namespace AppDefines {
+
+const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); border-radius: 10px}";
 
     // Excel
     const AppInfo EXCEL{
@@ -8,9 +14,9 @@ namespace AppDefines {
 #ifdef Q_OS_WIN
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE",
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE",
-#elif Q_OS_MAC
+#elif defined(Q_OS_MAC)
         "/Applications/Microsoft Excel.app",
-        "open -a 'Microsoft Excel'"
+        "Microsoft Excel",
 #endif
         ":/res/icons/icon_xlsx.svg",
         "QFrame{background-color: rgb(92, 255, 160); border-radius: 10px}",
@@ -40,8 +46,9 @@ namespace AppDefines {
 #ifdef Q_OS_WIN
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
-#elif Q_OS_MAC
-
+#elif defined(Q_OS_MAC)
+        "/Applications/Microsoft Word.app",
+        "Microsoft Word",
 #endif
         ":/res/icons/icon_word.svg",
         "QFrame{background-color: rgb(0, 85, 255); border-radius: 10px}",
@@ -74,8 +81,9 @@ namespace AppDefines {
 #ifdef Q_OS_WIN
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE",
         "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE",
-#elif Q_OS_MAC
-
+#elif defined(Q_OS_MAC)
+        "/Applications/Microsoft Word.app",
+        "Visual Studio Code",
 #endif
         ":/res/icons/icon_powerpoint.svg",
         "QFrame{background-color: rgb(255, 0, 0); border-radius: 10px}",
@@ -104,7 +112,9 @@ namespace AppDefines {
 #ifdef Q_OS_WIN
         qEnvironmentVariable("LOCALAPPDATA") + "\\Programs\\Microsoft VS Code\\Code.exe",
         qEnvironmentVariable("LOCALAPPDATA") + "\\Programs\\Microsoft VS Code\\Code.exe",
-#elif Q_OS_MAC
+#elif defined(Q_OS_MAC)
+        "/Applications/Visual Studio Code.app",
+        "Visual Studio Code",
 #endif
         ":/res/icons/icon_vscode.svg",
         "QFrame{background-color: rgb(0, 170, 255); border-radius: 10px}",
