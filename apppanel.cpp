@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QProcess>
 #include <QStringList>
+#include <utility>
 
 AppPanel::AppPanel(AppInfo& app, QWidget *parent)
     : QWidget(parent)
@@ -25,7 +26,6 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
     ui->pushButton_execapp->setFlat(true);
     // 実体の存在確認
 #ifdef Q_OS_WIN
-    qDebug() << app._apppath;
     ui->pushButton_execapp->setEnabled(QFile::exists(app._apppath));
 #elif Q_OS_MAC
 #endif
@@ -45,7 +45,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         dialog.setOption(QFileDialog::ShowDirsOnly, false);         // フォルダも選択
         dialog.setOption(QFileDialog::DontUseNativeDialog, true);   // Qt独自ダイアログを使用
         QString exts;
-        for(QString ext : app._exts){
+        for(const QString& ext : app._exts){
             exts += ext + ";;";
         }
         dialog.setNameFilter(exts);
@@ -53,7 +53,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         if(!dialog.exec()) return;
 
         QStringList selected_paths = dialog.selectedFiles();
-        for (const QString &path : selected_paths) {
+        for (const QString &path : std::as_const(selected_paths)) {
             ui->comboBox_filelist->addItem(path);
         }
     });
