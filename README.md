@@ -2,7 +2,7 @@
 
 - You can easily launch apps that you often use.
 
-## What I have implement.
+## What I have implemented.
 
 - Add Excel, Word, PowerPoint, VS Code for Windows and Mac.
 - Add search function.
