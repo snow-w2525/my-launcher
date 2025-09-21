@@ -29,6 +29,8 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
      * ------------------------------------------------------------*/
     ui->pushButton_execapp->setIcon(QIcon(app._iconpath));
     ui->pushButton_execapp->setFlat(true);
+    ui->pushButton_execapp->setStyleSheet("QPushButton{background-color: white; border-radius: 10px}");
+
     connect(ui->pushButton_execapp, &QPushButton::clicked, this, [=]() {    // ボタンを押した時の処理
 #ifdef Q_OS_WIN
         if(ui->comboBox_filelist->currentText().isEmpty()){
