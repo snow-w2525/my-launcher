@@ -11,3 +11,4 @@
 
 - Can add any apps user wants to the menu.
 - Can change the executable file of an app.
+- Can hold file history.
