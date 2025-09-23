@@ -1,8 +1,8 @@
 # My Launcher
 
-- You can easily launch apps that you often use.
+- You can easily launch apps that "I" often use.
 
-## What I have implemented.
+## What I have already implemented.
 
 - Add Excel, Word, PowerPoint, VS Code for Windows and Mac.
 - Add search function.
