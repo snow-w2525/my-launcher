@@ -1,6 +1,6 @@
 #include "apppanel.h"
 #include "ui_apppanel.h"
-#include "appdefiles.h"
+#include "appdefines.h"
 
 #include <QIcon>
 #include <QFile>

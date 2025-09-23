@@ -1,4 +1,4 @@
-#include "appdefiles.h"
+#include "appdefines.h"
 
 #ifdef Q_OS_MAC
 #include <QStandardPaths>

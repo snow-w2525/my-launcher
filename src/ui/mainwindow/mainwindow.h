@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "appdefiles.h"
+#include "appdefines.h"
 
 #include <QHash>
 

@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "appdefiles.h"
+#include "appdefines.h"
 #include "apppanel.h"
 
 #include <QVBoxLayout>
