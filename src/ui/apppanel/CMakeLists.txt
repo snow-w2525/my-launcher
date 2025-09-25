@@ -11,8 +11,6 @@ add_library(${OBJ_NAME} OBJECT
 target_include_directories(${OBJ_NAME}
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}                 # includeパスを公開
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../appinfo
 )
 
 target_sources(${APP_NAME}

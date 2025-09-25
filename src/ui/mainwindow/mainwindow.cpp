@@ -1,11 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "appdefines.h"
+#include "addappdialog.h"
 #include "apppanel.h"
 
 #include <QVBoxLayout>
 #include <utility>
 
+/**
+* @brief コンストラクタ
+*/
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -15,6 +19,24 @@ MainWindow::MainWindow(QWidget *parent)
      * ------------------------------------------------------------*/
     ui->setupUi(this);
     this->setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
+
+
+    /* メニューバーの設定
+     * ------------------------------------------------------------*/
+
+    // 編集メニュー
+    QMenu* editMenu = new QMenu("Edit", this);
+    QAction* addappAction = new QAction("Add App", this);       // Add App
+    // 編集メニューにアクションを追加
+    editMenu->addAction(addappAction);
+    connect(addappAction, &QAction::triggered, this, [this]() {
+        AddAppDialog dlg;
+        dlg.exec();
+    });
+
+    // メニューバーにメニューを追加
+    ui->menubar->addMenu(editMenu);
+
 
 
     /* アプリ情報の取得
@@ -28,17 +50,28 @@ MainWindow::MainWindow(QWidget *parent)
     ui->scrollArea_appmenu->setWidget(container);
 }
 
+/**
+* @brief デストラクタ
+*/
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+/**
+* @brief アプリ情報に基づいてアプリパネルを貼る
+* @param app アプリ情報
+* @param layout アプリパネルを貼るレイアウト
+*/
 void MainWindow::SetAppPanel(AppInfo& app, QVBoxLayout* layout) {
     AppPanel* panel = new AppPanel(app);
     layout->addWidget(panel);
     _panellist[app._appname] = panel;
 }
 
+/**
+* @brief 検索枠に文字を入れたときの処理
+*/
 void MainWindow::on_lineEdit_browse_textChanged(const QString &arg1) {
 
     // 文字が入っていなければ、すべてのパネルを表示して終了

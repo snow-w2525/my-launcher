@@ -9,6 +9,10 @@
 #include <QStringList>
 #include <utility>
 
+
+/**
+* @brief コンストラクタ
+*/
 AppPanel::AppPanel(AppInfo& app, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::AppPanel)
@@ -63,7 +67,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         }
         dialog.setNameFilter(exts);
 
-        if(!dialog.exec()) return;
+        if(QDialog::Accepted != dialog.exec()) return;
 
         QStringList selected_paths = dialog.selectedFiles();
         for (const QString &path : std::as_const(selected_paths)) {
@@ -79,8 +83,19 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         ui->pushButton_execapp->setEnabled(false);
     }
 
+
+    /* ファイルを不要とするアプリの場合はファイル選択を非活性にする
+     * ------------------------------------------------------------*/
+    if(!app._isneedfile){
+        ui->comboBox_filelist->setEnabled(false);
+        ui->pushButton_filebrowse->setEnabled(false);
+    }
+
 }
 
+/**
+* @brief デストラクタ
+*/
 AppPanel::~AppPanel()
 {
     delete ui;

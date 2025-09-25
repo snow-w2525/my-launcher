@@ -11,6 +11,8 @@ struct AppInfo {
     QString _iconpath;              // アイコンのパス
     QString _style;                 // 背景色
     QVector<QString> _exts;         // 拡張子
+    bool _isdefaultapp;             // デフォルトで表示させる
+    bool _isneedfile;               // ファイルの要不要
 };
 
 namespace AppDefines {

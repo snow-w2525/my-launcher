@@ -37,7 +37,9 @@ const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); b
             "Symbolic Link Format (*.slk)",
             "XML Spreadsheet 2003 (*.xml)",
             "Others (*.*)"
-        })
+        }),
+        true,
+        true
     };
 
     // Word
@@ -72,7 +74,9 @@ const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); b
             "Word 2003 XML Document (*.xml)",
             "Microsoft Works Document (*.wps)",
             "Others (*.*)"
-        })
+        }),
+        true,
+        true
     };
 
     // Power Point
@@ -101,7 +105,9 @@ const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); b
             "Add-In (*.ppam)",
             "PowerPoint 97–2003 Add-In (*.ppa)",
             "Others (*.*)"
-        })
+        }),
+        true,
+        true
     };
 
 
@@ -156,7 +162,9 @@ const QString DEACTIVATE_PANEL = "QFrame{background-color: rgb(200, 200, 200); b
             "GraphQL Schema (*.graphql)",
             "INI Configuration (*.ini)",
             "Others (*.*)"
-        })
+        }),
+        true,
+        false
     };
 
     const QVector<AppInfo> ALL {

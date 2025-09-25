@@ -1,10 +1,11 @@
-set(OBJ_NAME MainWindow)
+set(OBJ_NAME AddAppDialog)
+
 set(CMAKE_AUTOUIC ON)
 
 add_library(${OBJ_NAME} OBJECT
-    ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/addappdialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/addappdialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/addappdialog.ui
 )
 
 target_include_directories(${OBJ_NAME}
@@ -20,7 +21,4 @@ target_link_libraries(${OBJ_NAME}
     PRIVATE
         Qt6::Core
         Qt6::Widgets
-        AppInfo
-        AppPanel
-        AddAppDialog
 )
