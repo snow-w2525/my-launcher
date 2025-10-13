@@ -18,6 +18,14 @@ public:
 private slots:
     void on_pushButton_appbrowse_clicked();
 
+    void on_pushButton_filebrowse_clicked();
+
+    void on_pushButton_changecolor_clicked();
+
+    void on_buttonBox_rejected();
+
+    void on_buttonBox_accepted();
+
 private:
     Ui::AddAppDialog *ui;
 };

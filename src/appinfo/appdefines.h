@@ -5,14 +5,14 @@
 #include <QVector>
 
 struct AppInfo {
-    QString _appname;               // アプリ名
-    QString _apppath;               // アプリの実体へのパス
-    QString _command;               // アプリを起動するコマンド
-    QString _iconpath;              // アイコンのパス
-    QString _style;                 // 背景色
-    QVector<QString> _exts;         // 拡張子
-    bool _isdefaultapp;             // デフォルトで表示させる
-    bool _isneedfile;               // ファイルの要不要
+    QString appname;               // アプリ名
+    QString apppath;               // アプリの実体へのパス
+    QString command;               // アプリを起動するコマンド
+    QString iconpath;              // アイコンのパス
+    QString style;                 // 背景色
+    QVector<QString> exts;         // 拡張子
+    bool isdefaultapp;             // デフォルトで表示させる
+    bool isneedfile;               // ファイルの要不要
 };
 
 namespace AppDefines {

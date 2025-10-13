@@ -21,27 +21,27 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
 
     /* スタイルの設定
      * ------------------------------------------------------------*/
-    ui->frame_apppanel->setStyleSheet(app._style);
+    ui->frame_apppanel->setStyleSheet(app.style);
 
 
     /* タイトル
      * ------------------------------------------------------------*/
-    ui->label_apptitle->setText(app._appname);
+    ui->label_apptitle->setText(app.appname);
 
 
     /* 実行ボタン
      * ------------------------------------------------------------*/
-    ui->pushButton_execapp->setIcon(QIcon(app._iconpath));
+    ui->pushButton_execapp->setIcon(QIcon(app.iconpath));
     ui->pushButton_execapp->setFlat(true);
     ui->pushButton_execapp->setStyleSheet("QPushButton{background-color: white; border-radius: 10px}");
 
     connect(ui->pushButton_execapp, &QPushButton::clicked, this, [=]() {    // ボタンを押した時の処理
 #if defined(Q_OS_WIN)
         if(ui->comboBox_filelist->currentText().isEmpty()){
-            QProcess::startDetached(app._command);
+            QProcess::startDetached(app.command);
         }
         else{
-            QProcess::startDetached(app._command, QStringList() << ui->comboBox_filelist->currentText());
+            QProcess::startDetached(app.command, QStringList() << ui->comboBox_filelist->currentText());
         }
 #elif defined(Q_OS_MAC)
         if(ui->comboBox_filelist->currentText().isEmpty()){
@@ -62,7 +62,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         dialog.setOption(QFileDialog::ShowDirsOnly, false);                 // フォルダも選択
         dialog.setOption(QFileDialog::DontUseNativeDialog, true);           // Qt独自ダイアログを使用
         QString exts;
-        for(const QString& ext : app._exts){
+        for(const QString& ext : app.exts){
             exts += ext + ";;";
         }
         dialog.setNameFilter(exts);
@@ -78,7 +78,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
 
     /* 実体がない場合はパネルを非活性にする
      * ------------------------------------------------------------*/
-    if(!QFile::exists(app._apppath)){
+    if(!QFile::exists(app.apppath)){
         ui->frame_apppanel->setStyleSheet(AppDefines::DEACTIVATE_PANEL);
         ui->pushButton_execapp->setEnabled(false);
     }
@@ -86,7 +86,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
 
     /* ファイルを不要とするアプリの場合はファイル選択を非活性にする
      * ------------------------------------------------------------*/
-    if(!app._isneedfile){
+    if(!app.isneedfile){
         ui->comboBox_filelist->setEnabled(false);
         ui->pushButton_filebrowse->setEnabled(false);
     }

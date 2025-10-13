@@ -66,7 +66,7 @@ MainWindow::~MainWindow()
 void MainWindow::SetAppPanel(AppInfo& app, QVBoxLayout* layout) {
     AppPanel* panel = new AppPanel(app);
     layout->addWidget(panel);
-    _panellist[app._appname] = panel;
+    _panellist[app.appname] = panel;
 }
 
 /**
