@@ -32,14 +32,15 @@ void AddAppDialog::on_pushButton_appbrowse_clicked() {
 }
 
 
+/**
+* @brief ファイル検索ダイアログを開く
+*/
 void AddAppDialog::on_pushButton_filebrowse_clicked() {
 
 }
 
 /**
 * @brief 色変更ダイアログを開く
-* @param app アプリ情報
-* @param layout アプリパネルを貼るレイアウト
 */
 void AddAppDialog::on_pushButton_changecolor_clicked() {
     QColor color = QColorDialog::getColor(Qt::white, this, "Select Color");

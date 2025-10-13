@@ -22,6 +22,7 @@ qt_add_executable(${APP_NAME}
 
 add_subdirectory(resources)
 add_subdirectory(translations)
+add_subdirectory(src/apputility)
 add_subdirectory(src/appinfo)
 add_subdirectory(src/ui)
 
