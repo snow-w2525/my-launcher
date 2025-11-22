@@ -45,10 +45,10 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         }
 #elif defined(Q_OS_MAC)
         if(ui->comboBox_filelist->currentText().isEmpty()){
-            QProcess::startDetached("open", {"-a", app._command});
+            QProcess::startDetached("open", {"-a", app.command});
         }
         else{
-            QProcess::startDetached("open", {"-a", app._command, ui->comboBox_filelist->currentText()});
+            QProcess::startDetached("open", {"-a", app.command, ui->comboBox_filelist->currentText()});
         }
 #endif
     });
