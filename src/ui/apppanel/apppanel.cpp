@@ -17,17 +17,17 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
 
     /* スタイルの設定
      * ------------------------------------------------------------*/
-    ui->frame_apppanel->setStyleSheet(app._style);
+    ui->frame_apppanel->setStyleSheet(app.Style);
 
 
     /* タイトル
      * ------------------------------------------------------------*/
-    ui->label_apptitle->setText(app._appname);
+    ui->label_apptitle->setText(app.AppName);
 
 
     /* 実行ボタン
      * ------------------------------------------------------------*/
-    ui->pushButton_execapp->setIcon(QIcon(app._iconpath));
+    ui->pushButton_execapp->setIcon(QIcon(app.IconPath));
     ui->pushButton_execapp->setFlat(true);
     ui->pushButton_execapp->setStyleSheet("QPushButton{background-color: white; border-radius: 10px}");
 
@@ -41,10 +41,10 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         }
 #elif defined(Q_OS_MAC)
         if(ui->comboBox_filelist->currentText().isEmpty()){
-            QProcess::startDetached("open", {"-a", app._command});
+            QProcess::startDetached("open", {"-a", app.Command});
         }
         else{
-            QProcess::startDetached("open", {"-a", app._command, ui->comboBox_filelist->currentText()});
+            QProcess::startDetached("open", {"-a", app.Command, ui->comboBox_filelist->currentText()});
         }
 #endif
     });
@@ -58,7 +58,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
         dialog.setOption(QFileDialog::ShowDirsOnly, false);                 // フォルダも選択
         dialog.setOption(QFileDialog::DontUseNativeDialog, true);           // Qt独自ダイアログを使用
         QString exts;
-        for(const QString& ext : app._exts){
+        for(const QString& ext : app.Exts){
             exts += ext + ";;";
         }
         dialog.setNameFilter(exts);
@@ -74,7 +74,7 @@ AppPanel::AppPanel(AppInfo& app, QWidget *parent)
 
     /* 実体がない場合はパネルを非活性にする
      * ------------------------------------------------------------*/
-    if(!QFile::exists(app._apppath)){
+    if(!QFile::exists(app.AppPath)){
         ui->frame_apppanel->setStyleSheet(AppDefines::DEACTIVATE_PANEL);
         ui->pushButton_execapp->setEnabled(false);
     }
